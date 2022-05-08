@@ -142,7 +142,7 @@ body {
 }
     @media only screen and (max-width : 1250px) {
     .header__link--list__container , .header__user--login , .header__user--register{
-        display: none !important;
+        display: block !important;
     }
     .humburger__menu , .humburger__menu__list , .header__user--login--small--screen{
         display: block !important;
