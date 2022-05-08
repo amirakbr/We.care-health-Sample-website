@@ -1,0 +1,152 @@
+body {
+    .header {
+        width: 100%;
+        background-color: #E8EEF9;
+        height: max-content;
+        overflow: hidden;
+        .navabr__container {
+                height: 12vh ;
+                @include dsply-flex-cntr-cntr ;
+                justify-content: space-between;
+                width: 100%;
+            .left--header__side {
+                margin-left: 5rem ;
+                @include dsply-flex-cntr-cntr ; 
+                .header__icon {
+                    @include dsply-flex-cntr-cntr ; 
+                    font-size: $font-size-sub-large;
+                    margin-right: 1.5rem;
+                    width: 4rem;
+                    height: 4rem;
+                    background-color: royalblue;
+                    border-radius: .5rem;
+                    color: $light--clr;
+                    &::before {
+                        content: "\f055";
+                        font-family: "Font Awesome 6 Free";
+                        font-weight: 900;
+                    }
+                }
+                .header__title {
+                    font-size: $font-size-sup-small;
+                    margin-right: 5rem;
+                }
+                .header__link--list__container {
+                    @include dsply-flex-cntr-cntr ;
+                    transform: translateY(.3rem);
+                    .navbarLink {
+                        font-size: $font-size-sub-normal;
+                        margin: 0 3rem 0 0;
+                    }
+                }
+            }
+            .right--header__side {
+
+                @include dsply-flex-cntr-cntr ; 
+                transform: translateY(.3rem);
+                margin-right: 5rem;
+                .header__user--login , .header__user--register {
+                    padding: 1rem 2rem;
+                    margin: 0 0 0 2rem;
+                    .header__user__button {
+                        font-size: $font-size-normal;
+                    }
+                }
+                .header__user--register {
+                    background-color: $blue--violet--clr;
+                    border-radius: 1rem;
+                    .header__user__button {
+                        color: $light--clr;
+                    }
+                }
+                .humburger__menu {
+                    display: none;
+                    .humburger__menu__icon {
+                        font-size: $font-size-sub-large;
+                        &::before {
+                            content: "\f0c9";
+                            font-family: "Font Awesome 6 Free";
+                            font-weight: 900;
+                        }
+                    }
+                }
+            }
+        }
+        .humburger__menu__list {
+            display: none;
+            position: absolute;
+            right: 3.5rem;
+            z-index: +10;
+            top: 12vh;
+            background-color: #F3F7FF;
+            padding: 2rem 6rem 2rem 1rem;
+            box-shadow: 0rem 2rem 2rem 1rem #6f6f6f4a;      
+            border-radius: 2rem;
+            &::before {
+                position: absolute;
+                content: "";
+                border: 1rem solid #B9C7E3;
+                border-right-color: transparent;
+                border-bottom-color: transparent;
+                top: -1rem;
+                right: 1.5rem;
+                rotate: 45deg;
+            }
+            .humburger__menu__container {
+                width: max-content;
+                @include dsply-column-cntr-cntr ; 
+                align-items: flex-start;
+                div {
+                    p {
+                        font-size: $font-size-sub-normal;
+                        margin: .5rem 0;
+                        padding: 1rem 2rem ;
+                        display: flex;
+                        flex-direction: column;
+                        &::after {
+                            content:  "";
+                            width: 100%;
+                            border-bottom: 1rem solid rebeccapurple;
+                        }
+                    }
+                }
+                .button__container {
+                    padding: 0rem 2rem ;
+                    .header__user--login , .header__user--register {
+                        margin: .5rem 0;
+                        .header__user__button {
+                            font-size: $font-size-normal;
+                            p {
+                                &::after {
+                                    content: none;
+                                }
+                            }
+                        }
+                    }
+                    .header__user--login {
+                        border: .2rem solid royalblue;
+                        border-radius: 1rem;
+                    }
+                    .header__user--register {
+                        background-color: $blue--violet--clr;
+                        border-radius: 1rem;
+                        border: .2rem solid transparent;
+                        .header__user__button {
+                            color: $light--clr;
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}
+/*
+    @media only screen and (max-width : 1040px) {
+    .header__link--list__container , .header__user--login , .header__user--register{
+        display: none !important;
+    }
+    .humburger__menu , .humburger__menu__list , .header__user--login--small--screen{
+        display: block !important;
+    }
+}
+*/

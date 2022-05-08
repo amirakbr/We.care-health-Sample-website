@@ -1,0 +1,644 @@
+.main {
+    width: 100%;
+    .main__container {
+        width: 100%;
+        .main__searchBox {
+            margin: 0 8rem;
+            .main__searchBox__container {
+                @include dsply-column-cntr-cntr ; 
+                align-items: flex-start;
+                padding: 4rem 3rem;
+                border: .2rem solid #E8EEF9;
+                border-radius: 2rem;
+                z-index: +10;
+                transform: translateY(-2rem);
+                background-color: #f4f8ff;
+                box-shadow: 0rem 2rem 2rem 0rem #c4c4ca;
+                .search__input--container {
+                    @include dsply-flex-cntr-cntr ; 
+                    width: 100%;
+                    justify-content: space-evenly;
+                    .search--input {
+                        width: 100%;
+                        margin: 0 1rem 0 0;
+                        @include dsply-flex-cntr-cntr ; 
+                        justify-content: flex-start;
+                        border: .1rem solid $gray-scale;
+                        background-color: #fafbfe;
+                        padding: 0 2rem;
+                        border-radius: 1rem;
+                        color: $gray--fontclr--light;
+                        font-size: $font-size-sub-normal ;
+                        input {
+                            padding: 2rem 0;
+                            padding-left: 2rem;
+                            width: 100%;
+                            overflow: auto;
+                            font-size: $font-size-sub-normal ;
+                        }
+                    }
+                    .search__doctors , .search__hospital{
+                        &::before {
+                            content: "\f002";
+                            font-family: "Font Awesome 6 Free";
+                            font-weight: 900;
+                            display: table;
+                            clear: both;
+                            position: relative;
+                        }
+                    }
+                    .search__hospital {
+                        &::before {
+                            content: "\f3c5";
+                        }
+                    }
+                    .search--submit {
+                        button {
+                            padding: 2rem 1rem;
+                            background-color: royalblue;
+                            color: $light--clr;
+                            font-size: $font-size-sub-normal ;
+                            border-radius: 1rem;
+                        }
+                    }
+                }
+                .search--box__tags {
+                    @include dsply-flex-cntr-cntr ; 
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    .search--box__tags__container {
+                        .search__tags__title {
+                            margin: 1.5rem 0 ;
+                            font-size: $font-size-normal ;
+                            color: $gray-scale ;
+                        }
+                        .search--box__tags__list {
+                            @include dsply-flex-cntr-cntr ; 
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            .search__tags--list__container {
+                                @include dsply-flex-cntr-cntr ; 
+                                flex-wrap: wrap;
+                                justify-content: flex-start;
+                                overflow: hidden;
+                                height: 5rem;
+                                .search__tags {
+                                    white-space: nowrap;
+                                    font-size: $font-size-sup-small ; 
+                                    color: #4e6180;
+                                    background-color: #dbdbdb;
+                                    margin: 0 1.5rem 2rem 0;
+                                    padding: 1rem 1.5rem;
+                                    @include dsply-flex-cntr-cntr ; 
+                                    border-radius: 1rem;
+                                    &::after {
+                                        content: "\f00d";
+                                        font-family: "Font Awesome 6 Free";
+                                        font-weight: 900;
+                                        display: table;
+                                        clear: both;
+                                        position: relative;
+                                        margin-left: 2rem;
+                                        color: #0a234c;
+                                    }
+                                }
+                            }
+                            .load__more--tag {
+                                white-space: nowrap;
+                                font-size: $font-size-sub-normal ; 
+                                color: #5881c1;
+                                background-color: #cbdefd;
+                                margin: 0 0rem 2rem 3rem;
+                                padding: 1rem 1.5rem;
+                                border-radius: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .search__history {
+            margin-left: 5rem;
+            .search__history__container {
+                @include dsply-column(flex-start , center) ;
+                .search__history__title {
+                    font-size: $font-size-large;
+                    color: $gray-scale;
+                    padding: 1rem 0;
+                    margin-bottom: 2rem;
+                }
+                .search__history__logs {
+                    width: 100%; 
+                    display: grid;
+                    padding: 1rem .5rem;
+                    grid-template-columns: 15rem 1fr;
+                    grid-template-rows: 1fr;
+                    align-items: center;
+                    .search__history__selector__container {
+                        @include dsply-column(flex-start , center) ;
+                        justify-content: space-evenly;
+                        width: max-content;
+                        height: 100%;
+                        padding-right: 2rem;
+                        border-right: .1rem solid $blue--violet--clr;
+                        .search__history__selector {
+                            padding: 1rem 1.5rem;
+                            width: 100%;
+                            height: 33.333%;
+                            @include dsply-column-cntr-cntr ;
+                            align-items: flex-start;
+                            color: #4e6180;
+                            font-size: $font-size-sub-normal;
+                        }
+                        .active__selector {
+                            border: .15rem solid $gray-scale;
+                            border-radius: 2rem;
+                            color: $gray-scale;
+                        }
+                    }
+                    .search__history__board--view {
+                        display: grid;
+                        grid-template-rows: 1fr;
+                        width: 95%; 
+                        margin: 0 auto;
+                        .search__history--specialties , .search__history--conditions , .search__history--procedures{
+                            display: none;
+                            transform: scaleY(0);
+                        }
+                        .active__show--history {
+                            display: grid;
+                            transform: scaleY(1);
+                            grid-template-columns: repeat(7 , 1fr);
+                            gap: 1rem;
+                            .search__specialties--item {
+                                @include dsply-column-cntr-cntr ;
+                                padding: 3rem ;
+                                background-color: #e8f4ff;
+                                border-radius: 1rem;
+                                border: .2rem solid transparent;
+                                img {
+                                    width: 5rem;
+                                    height: 5rem;
+                                    margin-bottom: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .find__your__doctor {
+            width: 100%;
+            margin-top: 4rem;
+            .find__your__doctor__container {
+                width: 100%;
+                @include grid-gtc-2(1fr,  1.5fr) ;
+                align-items: center;
+                gap: 5rem;
+                .find__your__doctor__left--side {
+                    margin-left: 4rem;
+                    .find__your__doctor__titel {
+                        font-size: $font-size-large ; 
+                        color: $gray-scale;
+                    }
+                    .find__your__doctor__description {
+                        font-size: $font-size-sub-normal;
+                        color: #4e6180;
+                        margin-top: 2rem;
+                    }
+                    .find__your__doctor__steps {
+                        width: 100%;
+                        margin-top: 3rem;
+                        .find__your__doctor__steps__container {
+                            @include dsply-column(flex-start , space-evenly) ;
+                            .find__your__doctor__steps__list {
+                                display: flex;
+                                margin-bottom: 3rem;
+                                .find__your__doctor__steps__list__content {
+                                    display: flex;
+                                    flex-direction: column;
+                                    &::after {
+                                        content: "";
+                                        border-left: .2rem solid #5881c1;
+                                        height: calc(100% - 3rem) ;
+                                        display: table;
+                                        clear: both;
+                                        position: absolute;
+                                        left: 0;
+                                        top: 4rem;
+                                        background-color: royalblue;
+                                        transform: translate(2rem , 1rem);
+                                    }
+                                    .find__your__doctor__steps__list__titel {
+                                        display: flex;
+                                        align-items: center;
+                                        color: $gray-scale;
+                                        font-size: $font-size-normal;
+                                        &::before {
+                                            display:inline-block;
+                                            height:4rem;
+                                            width:4rem;
+                                            margin-right: 1rem;
+                                            content: "";
+                                            background:url(../../Media/01_main/cardiogram.png) no-repeat 0 0;
+                                            background-size: cover;
+                                            padding: 1rem;
+                                            background-color: #e8f4ff; 
+                                            border-radius: 50%;
+                                        }        
+                                    }
+                                    .find__your__doctor__steps__list__description {
+                                        color: #4e6180;
+                                        font-size: $font-size-sub-normal;
+                                        margin: 2rem 0 0 5rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .find__your__doctor__right--side{
+                    @include dsply-column-cntr-cntr ;
+                    .fixed__find__doctor__form {
+                        position: absolute;
+                        left: 0;
+                        top: 15%;
+                        padding: 5rem 3rem;
+                        @include dsply-column(flex-start , space-evenly) ;
+                        background: #e9f4ff;
+                        border-radius: 2rem;
+                        z-index: +4;
+                        .fixed__find__doctor__form__title {
+                            font-size: $font-size-large ;
+                            color: #122a52;
+                        }
+                        .fixed__find__doctor__form__input{
+                            width: 100%;
+                            .fixed__find__doctor__form__input--doctor , .fixed__find__doctor__form__input--location{
+                                @include dsply-flex(center , flex-start) ;
+                                border: .1rem solid $gray-scale;
+                                border-radius: 1rem;
+                                margin: 2rem 0;
+                                padding: .01rem 0rem .1rem 1rem;
+                                color: #4e6180;
+                                font-size: $font-size-sub-normal;
+                                &::before {
+                                    content: "\f002";
+                                    font-family: "Font Awesome 6 Free";
+                                    font-weight: 900;
+                                    display: table;
+                                    clear: both;
+                                    margin-right: .5rem;
+                                }
+                                input {
+                                    width: 100%;
+                                    padding: 1rem 0 1rem 1.5rem;
+                                    font-size: $font-size-sub-normal;
+                                }
+                            }
+                            .fixed__find__doctor__form__input--submit {
+                                width: 100%;
+                                @include dsply-column-cntr-cntr ; 
+                                margin-top: 1rem;
+                                padding: 1.5rem 2rem;
+                                border: .1rem solid royalblue;
+                                background-color: royalblue;
+                                border-radius: 1rem;
+                                color: $light--clr;
+                                font-size: $font-size-sub-normal;
+                            }
+                        }
+                    }
+                    .find__your__doctor__right--side__image {
+                        clip-path: circle(22.1rem at 35rem 19.4rem);
+                        z-index: +3;
+                    }
+                    .find__your__doctor__right--side__circle1 , .find__your__doctor__right--side__circle2 , .find__your__doctor__right--side__circle3 , .find__your__doctor__right--side__circle4{
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        right: 5%;
+                        transform: translate(-5% ,0);
+                        width: 70%;
+                        border-radius: 45% 75% 20% 50% ;
+                        z-index: +2;
+                    }
+                    .find__your__doctor__right--side__circle2 {
+                        z-index: -1;
+                        background-color: royalblue;
+                    }
+                    .find__your__doctor__right--side__circle3 , .find__your__doctor__right--side__circle4 {
+                        height: 100%;
+                        width: 80%;
+                        border-radius: 100% 100% 100% 70% ;
+                        border: .1rem solid $gray-scale;
+                        right: 0;
+                    }
+                    .find__your__doctor__right--side__circle4 {
+                        border-radius: 60% 40% 40% 40% ;
+                        height: 95%;
+                        top: 2.5%;
+                    }
+                }
+            }
+        }
+        .weCare__benefits {
+            width: 100%;
+            margin-top: 5rem;
+            .weCare__benefits__container {
+                @include grid-gtc-2(1fr ,1fr) ; 
+                align-items: center;
+                gap: 20rem;
+                margin: 0 5rem;
+                .weCare__benefits__left--side {
+                    width: 100%;
+                    height: 100%;
+                    .weCare__benefits__left--side__bckground {
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        background: url(../../Media/01_main/dr.robert.png) no-repeat 0 0;
+                        background-size: cover;
+                        background-position: center;
+                    }
+                    .weCare__benefits__left--side__backdrop--shadow {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: royalblue;
+                        top: 0;
+                        z-index: -1;
+                        border-radius:18rem 0% 0% 0%;
+                    }
+                    .weCare__benefits__left--side__fixed--ranking {
+                        position: absolute;
+                        padding: 1rem 2rem;
+                        background-color: rgba(221, 244, 255, 0.516);
+                        top: 0;
+                        right: 0;
+                        z-index: +3;
+                        border-radius: 8rem 0% 0 8rem;
+                        .weCare__benefits__list {
+                            width: max-content;
+                            @include dsply-column(flex-start , space-between) ;
+                            .weCare__benefits__item {
+                                width: 100%;
+                                @include dsply-flex(center , space-between) ;
+                                margin: .3rem 0;
+                                padding: .8rem;
+                                p {
+                                    display: block;
+                                    @include dsply-flex(center , space-between) ;
+                                    color: #4e6180;
+                                    font-size: $font-size-sub-normal;
+                                    &::before {
+                                        content: "";
+                                        width: 5rem;
+                                        height: 5rem;
+                                        background: url(../../Media/01_main/dr.jafar.png) no-repeat 0 0;
+                                        background-size: cover;
+                                        display: table;
+                                        clear: both;
+                                        margin-right: 2rem;
+                                        background-position: center;
+                                        background-color: royalblue;
+                                        border-radius: 50%;
+                                    }
+                                }
+                                &::after {
+                                    content: "\f142";
+                                    font-family: "Font Awesome 6 Free";
+                                    font-weight: 900;
+                                    display: table;
+                                    clear: both;
+                                    position: relative;
+                                    margin-left: 5rem;
+                                }
+                            }
+                        }
+                    }
+                }   
+                .weCare__benefits__right--side {
+                    width: 100%;
+                    @include dsply-column(flex-start , space-between) ; 
+                    .benefits__title {
+                        color: #122a52;
+                        font-size: $font-size-super-large ;
+                    }
+                    .benefits__description {
+                        font-size: $font-size-sub-normal;
+                        color: #4e6180;
+                        margin-top: 1rem;
+                    }
+                    .benefits__list {
+                        width: 100%;
+                        .benefits__list__container {
+                            @include dsply-column(flex-start , space-between) ;
+                            .benefits__list__item {
+                                @include dsply-flex-cntr-cntr ; 
+                                margin: 1rem 0;
+                                &::before {
+                                    content:  " ";
+                                    background: url(../../Media/01_main/bluetickicon.png) no-repeat 0 0;
+                                    display: table;
+                                    width: 5rem;
+                                    height: 5rem;
+                                    background-position: center;
+                                    background-size: contain;
+                                    margin-right: 2rem;
+                                }
+                                p {
+                                    font-size: $font-size-sub-normal;
+                                    color: #4e6180;
+                                }
+                            }
+                        }
+                    }
+                    .benefits__consulation {
+                        button {
+                            background-color: royalblue ; 
+                            color: $light--clr ; 
+                            padding: 1.5rem 2rem ; 
+                            font-size: $font-size-sub-normal ;
+                            border-radius: 1rem ; 
+                            margin-top: 1rem ;
+                        }
+                    }
+                }
+            }
+        }
+        .meet__our--speciallist {
+            .meet__our--speciallist__container {
+                @include dsply-column(flex-start , flex-start) ;
+                .meet__our--speciallist__swipper {
+                    width: 100%;
+                    .background--image--uploader__explore {
+                        width: 100%;
+                        .swiper-wrapper {
+                            .swiper-slide {
+                                @include grid-repeat (4 ,1fr) ;
+                                gap: 4rem 3rem;
+                                justify-content: center;
+                                align-items: center;
+                                padding: 5rem 10rem;
+                                .specialist {
+                                    @include dsply-column-cntr-cntr ; 
+                                    background-color: #fbfcfe;
+                                    padding: 2rem ;
+                                    border-radius: 2rem;
+                                    .specialist__image {
+                                        width: 100%;
+                                        background: url(../../Media/01_main/dr.susan.png) 0 0 no-repeat;
+                                        height : 15rem ; 
+                                        background-size: contain;
+                                        background-position: center bottom;
+                                        background-color: #e5e9e8;
+                                        border-radius: 1rem;
+                                    }
+                                    .specialist__name , .specialist__role{
+                                        width: 100%;
+                                        display: grid;
+                                        justify-content: center;
+                                        margin: .5rem 0;
+                                    }
+                                    .specialist__name {
+                                        font-size: $font-size-sub-normal;
+                                        color: #122a52;
+                                        margin-top: 1rem;
+                                    }
+                                    .specialist__role {
+                                        font-size: $font-size-sup-small;
+                                        color: #4e6180;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .swiper-paginationI {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+        .patient__feedback {
+            .patient__feedback__container {
+                .patient__feedback__swipper {
+                    .swiperrr {
+                        .swiper-wrapper {
+                            .patient__swiper__slide {
+                                @include grid-repeat(auto-fit, minmax(35rem, 1fr));
+                                align-items: center !important;
+                                grid-template-rows: max-content !important;
+                                gap: 8rem !important;
+                                width: 100% !important;
+                                padding: 0 10rem !important;
+                                .swiper__slide__left--side{
+                                    width: 100%;
+                                    height: 100%;
+                                   .patient__feedback__image {
+                                        width: 100%;
+                                        height: 100%;
+                                        z-index: +2;
+                                    }
+                                    .patient__feedback__bg--image , .patient__feedback__bg--image--1 {
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 70%;
+                                        bottom: 0;
+                                        background-color:#cbdefd ;
+                                        border-radius: 5rem 12rem 0rem 0rem / 6rem 15rem 0rem 0rem;
+                                    }
+                                    .patient__feedback__bg--image--1 {
+                                        height: 50%;
+                                        background-color:#e8f4ff;
+                                        border-radius: 1rem 12rem 0rem 0rem / 2rem 5rem 0rem 0rem;
+                                        z-index: +1;
+                                    }
+                                }
+                                .swiper__slide__right--side{
+                                    width: 100%;
+                                    @include dsply-column-cntr-cntr ; 
+                                    align-items:flex-start;
+                                    .patient__information {
+                                        width: 100%;
+                                        @include dsply-flex-cntr-cntr ; 
+                                        justify-content: flex-start;
+                                        height: 8rem;
+                                        .patient__information--image {
+                                            height: 100%;
+                                            background-color: royalblue;
+                                            width: 8rem;
+                                            border-radius: 50%;
+                                        }
+                                        .patient__personal--information {
+                                            height: 100%;
+                                            @include dsply-column-cntr-cntr ; 
+                                            align-items: flex-start;
+                                            justify-content: space-evenly;
+                                            margin-left: 3rem;
+                                            .patient__information--name {
+                                                font-size: $font-size-normal;
+                                                color: #0a234c;
+                                            }
+                                            .patient__information--location {
+                                                font-size: $font-size-sub-normal;
+                                                color:#4e6180;
+                                                margin-top: .5rem;
+                                            }
+                                            .patient__information--rating {
+                                                font-size: $font-size-sub-normal;
+                                                margin-top: 1rem;
+                                                i {
+                                                    color: gold;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .patient__feedback--letter {
+                                        margin-top: 8rem;
+                                        font-size: $font-size-sup-normal;
+                                        color:#4e6180;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .user__subscription {
+            margin-top: 10rem;
+            .user__subscription__container {
+                @include dsply-column-cntr-cntr ; 
+                width: 80%;
+                left: 10%;
+                background-color: rebeccapurple;
+                padding: 2rem 5rem;
+                .user__subscription__titel {
+                    width: max-content;
+                    @include dsply-column-cntr-cntr ; 
+                    p {
+                        font-size: 4rem;
+                        
+                    }
+                    .user__subscription__input {
+                        @include dsply-flex-cntr-cntr ;
+                        width: 90%;
+                        padding: .8rem 1rem;
+                        background-color: #E8EEF9;
+                        input {
+                            width: 70%;
+                            padding: 1rem .5rem;
+                        }
+                        .user__subscription--btn{
+                            padding: 1rem 1.5rem;
+                            background-color: aqua;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

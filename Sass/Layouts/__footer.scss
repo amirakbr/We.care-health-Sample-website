@@ -1,0 +1,77 @@
+.footer {
+     width: 100%;
+     margin-top: 10rem;
+     .footer__container {
+          @include grid-repeat(5, 1fr) ;
+          align-items: baseline;
+          margin: 0 6rem;
+          gap: 6rem;
+          .footer__social__media {
+               .logo__title {
+                    @include dsply-flex(center , flex-start) ; 
+                    font-size: 2.5rem;
+                    &::before {
+                         content: "\f055";
+                         font-family: "Font Awesome 6 Free";
+                         font-weight: 900;
+                         margin-right: 1rem;
+                    }
+               }
+               .socail__page {
+                    margin-top: 4rem;
+                    @include grid-repeat(4 , 1fr) ;
+                    div {
+                         &::before {
+                              font-family: "Font Awesome 6 Brands";
+                              font-weight: 400;
+                              margin-right: 1rem;
+                         }
+                    }
+                    .facebook {
+                         &::before {
+                              content: "\f082";
+                         }
+                    }
+                    .twitter {
+                         &::before {
+                              content: "\f099";
+                         }
+                    }
+                    .skype{
+                         &::before {
+                              content: "\f17e";
+                         }
+                    }
+                    .linkdein{
+                         &::before {
+                              content: "\f08c";
+                         }
+                    }
+                    .youtube {
+                         &::before {
+                              content: "\f167";
+                         }
+                    }
+                    .mail {
+                         &::before {
+                              content: "\f0e0";
+                              font-family: "Font Awesome 6 free";
+                              font-weight:900;
+                         }
+                    }
+               }
+          }
+          .footer__for__patient , .footer__for__providers , .footer__for__partners , .footer__for__our--company {
+               p {
+                    font-size: 2.5rem;
+               }
+               ul {
+                    margin-top: 2rem;
+                    li {
+                         margin: .5rem 0;
+                         font-size: 1.7rem;
+                    }
+               }
+          }
+     }
+}          
